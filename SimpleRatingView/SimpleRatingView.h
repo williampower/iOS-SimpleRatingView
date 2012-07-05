@@ -13,4 +13,7 @@
 
 -(void)setRatingOf:(float)rating outOfPossible:(int)possible;
 
+@property (nonatomic,retain) NSString *bgImgName;
+@property (nonatomic,retain) NSString *fgImageName;
+
 @end

@@ -11,10 +11,6 @@
 #define LOW_CLAMP 0.01f
 #define HIGH_CLAMP 1.0f
 
-//#define BG_IMAGE @"circle_bkgnd.png"
-//#define FG_IMAGE @"circle_highlighted.png"
-#define BG_IMAGE @"star.png"
-#define FG_IMAGE @"star_highlighted.png"
 
 @interface SimpleRatingView ()
 -(UIImage*)imageByCropping:(UIImage*)imageToCrop toRect:(CGRect)rect;
@@ -26,6 +22,8 @@
 
 @synthesize currRating=_currRating;
 @synthesize currPossible=_currPossible;
+@synthesize bgImgName=_bgImgName;
+@synthesize fgImageName=_fgImageName;
 
 #pragma mark - lifecycle
 - (id)initWithFrame:(CGRect)frame
@@ -34,6 +32,8 @@
     if (self) {
         //set the color that 'clear' goes to in 'drawRect'
         [self setBackgroundColor:[UIColor clearColor]];
+        self.bgImgName = @"star_bkgnd.png";
+        self.fgImageName = @"star_highlighted.png";
     }
     return self;
 }
@@ -43,8 +43,31 @@
     if (self) {
         //set the color that 'clear' goes to in 'drawRect'
         [self setBackgroundColor:[UIColor clearColor]];
+        self.bgImgName = @"star_bkgnd.png";
+        self.fgImageName = @"star_highlighted.png";
     }
     return self;
+}
+-(void)dealloc{
+    [super dealloc];
+    [_bgImgName release];
+    [_fgImageName release];
+}
+-(void)setBgImgName:(NSString *)bgImgName{
+    if (bgImgName != _bgImgName) {
+        [_bgImgName release];
+        _bgImgName = bgImgName;
+        [_bgImgName retain];
+        [self setNeedsDisplay];
+    }
+}
+-(void)setFgImageName:(NSString *)fgImageName{
+    if (fgImageName != _fgImageName) {
+        [_fgImageName release];
+        _fgImageName = fgImageName;
+        [_fgImageName retain];
+        [self setNeedsDisplay];
+    }
 }
 
 - (void)drawRect:(CGRect)rect
@@ -56,8 +79,8 @@
     [[UIColor clearColor] setFill];
     CGContextFillRect(context, rect);
     
-    UIImage *bkgnd = [UIImage imageNamed:BG_IMAGE];
-    UIImage *foreground = [UIImage imageNamed:FG_IMAGE];
+    UIImage *bkgnd = [UIImage imageNamed:_bgImgName];
+    UIImage *foreground = [UIImage imageNamed:_fgImageName];
     
     for (int i=0; i<_currPossible; i++) {
         //always draw the background, offset by width of image

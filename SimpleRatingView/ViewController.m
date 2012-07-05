@@ -26,6 +26,14 @@
     _totalPossible = 5;
     _rating = 3.2;
     [_ratingLabel setText:[NSString stringWithFormat:@"%.1f",_rating]];
+    
+    /*
+     The default images used by the class is @"star_bkgnd.png" and
+     "star_highlighted.png". You can override those using the file name
+     for your custom images. 
+     */
+    [maskedTextView setBgImgName:[NSString stringWithString:@"circle_bkgnd.png"]];
+    [maskedTextView setFgImageName:[NSString stringWithString:@"circle_highlighted.png"]];
     [maskedTextView setRatingOf:_rating outOfPossible:_totalPossible];
 }
 
