@@ -4,7 +4,7 @@ iOS-SimpleRatingView
 Quick-and-dirty UIView subclass for displaying a rating, such as "4.2 stars out of 5"
 
 
-Intended use: 
+<strong>Intended use: </strong>
 
 1. Incorporate the SimpleRatingView class into your project.
 
@@ -14,7 +14,7 @@ Intended use:
 
 4. In your NIB/XIB, add a UIView that's big enough to hold the number of graphics you want for your rating (example description below)
 
-Example of layout consideration: 
+<strong>Example of layout consideration: </strong>
 
 The star graphic is 30px wide. If I want 5 stars displayed, the SimpleRatingView in my nib needs to be 5 * 30 wide (left aligned, not set to scale).
 
