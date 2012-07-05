@@ -15,6 +15,7 @@ Intended use:
 4. In your NIB/XIB, add a UIView that's big enough to hold the number of graphics you want for your rating (example description below)
 
 Example of layout consideration: 
+
 The star graphic is 30px wide. If I want 5 stars displayed, the SimpleRatingView in my nib needs to be 5 * 30 wide (left aligned, not set to scale).
 
 
